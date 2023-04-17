@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Randomizer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Random Number Generator</h1>
+    <div id="nice">
+        <p>Once upon a time, there were three friends: Alex, Stark, and John
+            <ul>
+                <li>Alex</li>
+                <li>Stark</li>
+                <li>John</li>
+            </ul>
+            One day, they decided to play a game and generate some random numbers.
+            </p>
+    </div>
+
+    <div id="friend">
+        <div id="friend1">
+            <h3>Alex</h3>
+            <p id="one">?</p>
+        </div>
+        <div id="friend2">
+            <h3>Stark</h3>
+            <p id="two">?</p>
+        </div>
+        <div id="friend3">
+            <h3>John</h3>
+            <p id="three">?</p>
+        </div>
+    </div>
+    
+    <div id="random">
+        <button onclick="random()" id="random">Start Randomize</button>
+    </div>
+    
+
+    <div class="result">
+        <p id="result">Results will be displayed here.</p>
+        <p id="result2"></p>
+        <p id="result3"></p>
+    </div>
+
+    <script>
+	    function random() {
+
+            var one = parseInt(Math.random()*20)+1;
+            document.getElementById("one").innerHTML = one;
+
+            var two = parseInt(Math.random()*20)+1;
+            document.getElementById("two").innerHTML = two;
+
+            var three = parseInt(Math.random()*20)+1;
+            document.getElementById("three").innerHTML = three;
+        
+            var biggestNum;
+            if (one >= two && one >= three) {
+			    biggestNum = one;
+                document.getElementById("result").innerHTML = "Friend who has the biggest number: Alex (" + one + ")";
+		    } else if (two >= one && two >= three) {
+			    biggestNum = two;
+                document.getElementById("result").innerHTML = "Friend who has the biggest number: Stark (" + two + ")";
+		    } else {
+			    biggestNum = three;
+                document.getElementById("result").innerHTML = "Friend who has the biggest number: John (" + three + ")";
+		    }
+
+		    var totalMins = two * three;
+		    var hours = Math.floor(totalMins / 60);
+		    var minutes = totalMins % 60;
+            document.getElementById("result3").innerHTML = "Time for winner to make dares (" + totalMins + "mins): " + hours + "hr " + minutes + "min";
+
+            let nthLetter = String.fromCharCode(96 + one);
+            document.getElementById("result2").innerHTML = "The " + one + "th letter in the English alphabet is: " + nthLetter;
+        }
+	</script>
+</body>
+</html>
